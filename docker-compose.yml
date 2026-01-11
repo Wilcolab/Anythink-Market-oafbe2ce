@@ -22,7 +22,7 @@ services:
       - "8001:8001"
     volumes:
       - ./express-server:/usr/src/app
-      - /usr/src/app/node_modules # Prevents local node_modules from overwriting container
+      - /usr/src/app/node_modules 
     environment:
       - PORT=8001
     command: yarn start
