@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   # The Python Application
   python-app:
     build:
       context: ./python-server # Replace with your actual path
-      dockerfile: Dockerfile
+      dockerfile: DockerFile
     ports:
       - "8000:8000"
     volumes:
@@ -17,7 +15,7 @@ services:
   node-app:
     build:
       context: ./express-server # Path to the folder created in previous step
-      dockerfile: Dockerfile
+      dockerfile: DockerFile
     ports:
       - "8001:8001"
     volumes:
