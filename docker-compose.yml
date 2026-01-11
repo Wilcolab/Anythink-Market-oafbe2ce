@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./python-app-directory:/usr/src/app
+      - ./python-server:/usr/src/app
     environment:
       - PORT=8000
 
