@@ -55,7 +55,9 @@ app.get('/health', (req, res) => {
  * Python equivalent: @app.get("/tasks") -> return {"tasks": tasks}
  * Response format: { "tasks": ["task1", "task2", ...] }
  */
-// TODO: Implement GET /tasks endpoint
+app.get('/tasks', (req, res) => {
+    res.json({ tasks: tasks });
+});
 
 /**
  * POST /tasks
@@ -67,7 +69,18 @@ app.get('/health', (req, res) => {
  * Note: Python server uses Pydantic for validation, ensuring 'text' field exists
  * TODO: Add validation to ensure request body contains 'text' field
  */
-// TODO: Implement POST /tasks endpoint
+app.post('/tasks', (req, res) => {
+    // Validation: Ensure 'text' field exists in request body
+    if (!req.body.text) {
+        return res.status(400).json({ error: "Field 'text' is required" });
+    }
+
+    // Add the new task to the list
+    tasks.push(req.body.text);
+
+    // Return success message matching Python server response
+    res.json({ message: "Task added successfully" });
+});
 
 // Start the server
 app.listen(port, '0.0.0.0', () => {
