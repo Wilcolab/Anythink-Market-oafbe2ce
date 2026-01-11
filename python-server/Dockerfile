@@ -10,6 +10,9 @@ COPY requirements.txt /app
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy the application code
+COPY src /app/src
+
 # Expose the port on which the server will run
 EXPOSE 8000
 

@@ -1,9 +1,26 @@
 services:
-  python-server:
+  # The Python Application
+  python-app:
     build:
-      context: ./python-server
+      context: ./python-server # Replace with your actual path
       dockerfile: Dockerfile
     ports:
-      - 8000:8000
+      - "8000:8000"
     volumes:
-      - ./python-server/src:/app/src
+      - ./python-server:/usr/src/app
+    environment:
+      - PORT=8000
+
+  # The Node.js Express Server
+  node-app:
+    build:
+      context: ./express-server # Path to the folder created in previous step
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./express-server:/usr/src/app
+      - /usr/src/app/node_modules 
+    environment:
+      - PORT=8001
+    command: yarn start
