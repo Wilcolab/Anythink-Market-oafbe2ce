@@ -4,7 +4,7 @@ services:
   # The Python Application
   python-app:
     build:
-      context: ./python-app-directory # Replace with your actual path
+      context: ./python-server # Replace with your actual path
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
